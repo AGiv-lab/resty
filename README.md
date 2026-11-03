@@ -76,7 +76,7 @@ Manual browser verification confirms that clicking GO displays the mock request 
 
 ## UML Diagram
 
-To be added for Lab 26.
+[View RESTy UML Diagram](./assets/resty-uml.md)
 
 ## Repository
 
