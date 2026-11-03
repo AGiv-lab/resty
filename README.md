@@ -1,16 +1,83 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# RESTy
 
-Currently, two official plugins are available:
+## Code 401 — Lab 26: Component-Based UI
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+RESTy is a React application that demonstrates a component-based interface for a REST API testing tool.
 
-## React Compiler
+This first phase uses mock API data rather than making live HTTP requests.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- Displays an input field for an API URL.
+- Displays GET, POST, PUT, and DELETE method options.
+- Uses a GO button to submit mock request parameters.
+- Displays the request method and URL.
+- Renders a formatted JSON response using mock data.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Current limitation:** The request method and URL are hardcoded for this phase. The method options and URL input do not yet control the request.
+
+## Technologies
+
+- React
+- JavaScript (JSX)
+- Vite
+- Sass (SCSS)
+- ESLint
+
+## Component Structure
+
+- `App.jsx` — Class component that manages application state and handles mock API calls.
+- `Header` — Function component that displays the application title.
+- `Footer` — Function component that displays the footer.
+- `Form` — Function component that submits request parameters to App through a callback.
+- `Results` — Function component that displays JSON data received through props.
+
+Each component has its own SCSS stylesheet.
+
+## Getting Started
+
+Clone the repository:
+
+```bash
+git clone git@github.com:AGiv-lab/resty.git
+cd resty
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Open the local URL displayed by Vite.
+
+## Verification
+
+Run ESLint:
+
+```bash
+npm run lint
+```
+
+Create a production build:
+
+```bash
+npm run build
+```
+
+Manual browser verification confirms that clicking GO displays the mock request method, URL, and formatted JSON response.
+
+## UML Diagram
+
+To be added for Lab 26.
+
+## Repository
+
+https://github.com/AGiv-lab/resty
