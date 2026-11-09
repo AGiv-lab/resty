@@ -15,10 +15,16 @@ function App() {
 
  const [data, setData] = useState(null);
  const [requestParams, setRequestParams] = useState({});
+ const [loading, setLoading] = useState(false);
 
   const callApi = (requestParams) => {
+    setLoading(true);
     // mock output
     const data = {
+      headers: {
+  'content-type': 'application/json',
+  'x-mock-response': 'true',
+},
       count: 2,
       results: [
         {name: 'fake thing 1', url: 'http://fakethings.com/1'},
@@ -28,6 +34,7 @@ function App() {
 
     setData(data);
 setRequestParams(requestParams);
+setLoading(false);
 };
 
     return (
@@ -36,7 +43,7 @@ setRequestParams(requestParams);
         <div>Request Method: {requestParams.method}</div>
         <div>URL: {requestParams.url}</div>
         <Form handleApiCall={callApi} />
-        <Results data={data} />
+        <Results data={data} loading={loading} />
         <Footer />
       </React.Fragment>
     );
