@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import './App.scss';
 
@@ -18,24 +18,45 @@ function App() {
  const [loading, setLoading] = useState(false);
 
   const callApi = (requestParams) => {
-    setLoading(true);
-    // mock output
-    const data = {
-      headers: {
-  'content-type': 'application/json',
-  'x-mock-response': 'true',
-},
-      count: 2,
-      results: [
-        {name: 'fake thing 1', url: 'http://fakethings.com/1'},
-        {name: 'fake thing 2', url: 'http://fakethings.com/2'},
-      ],
-    };
-
-    setData(data);
-setRequestParams(requestParams);
-setLoading(false);
+  setRequestParams(requestParams);
 };
+
+useEffect(() => {
+  if (!requestParams.url) return;
+
+const fetchData = async () => {
+  setLoading(true);
+
+  try {
+    const response = await fetch(requestParams.url, {
+      method: requestParams.method,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      ...(requestParams.body &&
+        ['POST', 'PUT'].includes(requestParams.method)
+        ? { body: requestParams.body }
+        : {}),
+    });
+
+    const results = await response.json();
+
+    setData({
+      headers: Object.fromEntries(response.headers.entries()),
+      results,
+    });
+  } catch (error) {
+    setData({
+      headers: {},
+      results: { error: error.message },
+    });
+  } finally {
+    setLoading(false);
+  }
+};
+
+fetchData();
+}, [requestParams]);
 
     return (
       <React.Fragment>
