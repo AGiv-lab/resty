@@ -1,9 +1,9 @@
 
-# RESTy — Lab 26 UML Diagram
+# RESTy — Lab 27 UML Diagram
 
 ```mermaid
 flowchart TD
-    A["App — Class Component<br/>Manages state and mock API call"]
+    A["App - Functional Component: useState manages response data, request parameters, and loading"]
     H["Header — Function Component"]
     F["Form — Function Component"]
     R["Results — Function Component"]
@@ -11,7 +11,7 @@ flowchart TD
 
     A -->|Renders| H
     A -->|Passes handleApiCall callback| F
-    F -->|Submits method and URL| A
-    A -->|Passes response data as props| R
+    F -->|Submits URL, HTTP method, and optional JSON body| A
+    A -->|Passes response data and loading state as props| R
     A -->|Renders| FT
 ```
