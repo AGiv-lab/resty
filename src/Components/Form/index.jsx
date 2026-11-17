@@ -40,10 +40,18 @@ function Form({ handleApiCall }) {
 
           <span id="put" className={method === 'PUT' ? 'selected' : ''} onClick={() => setMethod('PUT')}>PUT</span>
 
+          <span
+            id="patch"
+            className={method === 'PATCH' ? 'selected' : ''}
+            onClick={() => setMethod('PATCH')}
+          >
+            PATCH
+          </span>
+
           <span id="delete" className={method === 'DELETE' ? 'selected' : ''} onClick={() => setMethod('DELETE')}>DELETE</span>
 
         </label>
-{(method === 'POST' || method === 'PUT') && (
+{['POST', 'PUT', 'PATCH'].includes(method) && (
   <label>
     JSON Body:
     <textarea

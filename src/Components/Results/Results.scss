@@ -1,8 +1,8 @@
 section {
   padding: 1em 2em;
 
-  pre {
-    white-space: pre-wrap;
+  .json-response {
+    overflow-x: auto;
     overflow-wrap: anywhere;
   }
 }

@@ -34,12 +34,12 @@ const fetchData = async () => {
         'Content-Type': 'application/json',
       },
       ...(requestParams.body &&
-        ['POST', 'PUT'].includes(requestParams.method)
+        ['POST', 'PUT', 'PATCH'].includes(requestParams.method)
         ? { body: requestParams.body }
         : {}),
     });
 
-    const results = await response.json();
+    const results = response.status === 204 ? null : await response.json();
 
     setData({
       headers: Object.fromEntries(response.headers.entries()),
